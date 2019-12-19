@@ -14,7 +14,7 @@
   <meta name="description" content>
   <meta name="author" content="Mingze Gao">
   <meta name="keywords" content>
-  <title>归档 ~ Noah</title>
+  <title>Archive ~ Noah</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
@@ -121,7 +121,7 @@
                 
 
 <div class="list-group">
-  <p class="h4">共计 4 篇文章</p>
+  <p class="h4">4 posts in total.</p>
   <hr>
   
     
@@ -173,7 +173,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -181,7 +181,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -216,6 +216,15 @@
 
     
 
+
+    
+      <!-- 一言 -->
+      <div class="footer-hitokoto">
+        <a id="hitokotoa" href="#" target="_blank" rel="nofollow noopener noreferrer">
+          <span id="hitokoto"></span>
+        </a>
+      </div>
+    
   </div>
 </footer>
 
@@ -284,7 +293,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "归档&nbsp;",
+        "Archive&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
@@ -341,6 +350,51 @@
   </script>
 
 
+
+
+
+  <script type="text/javascript">
+    /* 首页文章列表随机图片 */
+    $("img.image_random").each(function(){
+      
+        var xjhUrl = "//img.xjh.me/random_img.php?return=json";
+      
+      var _this = $(this);
+      $.get(xjhUrl,function(data,status){
+        if(status === "success"){
+          if(data.result === 200){
+            _this[0].src = data.img;
+          }
+        }
+      });
+    });
+  </script>
+
+
+
+  <script type="text/javascript">
+  /*一言API*/
+  $(document).ready(function(){
+    getHitokoto();
+  });
+  function hitokoto(e) {
+    $("#hitokoto").stop().fadeOut(function() {
+      $("#hitokoto").html(e.hitokoto);
+      var element = document.getElementById('hitokotoa');
+      element.href = "https://hitokoto.cn?id=" + e.id;
+      $("#hitokoto").stop().fadeIn()
+    })
+  };
+  function getHitokoto() {
+    var e = ["a", "b", "c", "d"],
+    t = document.createElement("script");
+    t.type = "text/javascript";
+    t.id = "hitokotoko_js";
+    t.src = "//v1.hitokoto.cn/?encode=json&callback=hitokoto&charset=utf-8&cat=" + e[Math.floor(Math.random() * e.length)];
+    $("#hitokoto").append(t);
+  };
+  setInterval(getHitokoto, 1e4);
+  </script>
 
 
 
