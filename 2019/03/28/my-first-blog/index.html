@@ -31,6 +31,21 @@
   <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css">
 
 
+<link rel="stylesheet" href="/css/main.css">
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+  <style type="text/css">
+    .banner-bg {
+      
+        background-image: url('/img/default.png');
+      
+      background-position: center;
+      background-repeat: repeat-y;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+  </style>
 </head>
 
 
@@ -298,6 +313,15 @@
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+  <script type="text/javascript">
+    /*窗口监视*/
+    var originalTitle = document.title;
+    window.onblur = function(){document.title = "你不爱我了QAQ"};
+    window.onfocus = function(){document.title = originalTitle};
+  </script>
+
+
 <!-- Plugins -->
 
 
@@ -446,6 +470,30 @@
   </script>
 
 
+
+<!-- Functions -->
+<script type="text/javascript">
+  /* 切换背景 */
+  
+  $("#background").removeClass("banner-bg");
+  $("body").addClass("banner-bg");
+  var postToTopHight = $("#board").offset().top;
+  $(window).scroll(function () {
+    var bgDisplay = false;
+    var scrollHeight = document.body.scrollTop + document.documentElement.scrollTop;
+    bgDisplay = scrollHeight >= postToTopHight;
+    if(bgDisplay) {
+      $('#background').removeClass("rgba-black-slight");
+      $('#mainContent').removeClass("rgba-black-slight");
+      $('#footerContent').removeClass("rgba-black-slight");
+    } else {
+      $('#background').addClass("rgba-black-slight");
+      $('#mainContent').addClass("rgba-black-slight");
+      $('#footerContent').addClass("rgba-black-slight");
+    }
+  });
+  
+</script>
 
 
 
