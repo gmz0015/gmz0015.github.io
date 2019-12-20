@@ -256,41 +256,39 @@ body a:hover {
   right: -100px;
   z-index: 99;
   display: none;
-/* 目录文字阴影 */
-/* 底部文字样式修正 */
 }
-.wechat-qrcode .tocbot-link {
-  text-shadow: $tocbot-link-shadow;
+.tocbot-link {
+  text-shadow: 0.1em 0.1em 0.2em #ffffff;
 }
-.wechat-qrcode .tocbot-active-link {
-  text-shadow: $tocbot-active-link-shadow;
+.tocbot-active-link {
+  text-shadow: 0.1em 0.1em 0.2em #ffbcbc;
 }
-.wechat-qrcode footer {
-  color: $footer-color;
-  text-shadow: $footer-shadow;
+footer {
+  color: #ffffff;
+  text-shadow: 0.1rem 0.1rem 0.5rem white;
 }
-.wechat-qrcode footer a {
-  color: $footer-a-color;
+footer a {
+  color: #ffffff;
 }
-.wechat-qrcode footer a:hover {
-  color: $footer-a-hover-color;
+footer a:hover {
+  color: #fe4365;
 }
-.wechat-qrcode footer .iconfont {
-  color: $footer-icon-color;
-  text-shadow: $footer-icon-shadow;
+footer .iconfont {
+  color: #fc9d9a;
+  text-shadow: 0.1rem 0.1rem 0.5rem #ffffff;
 }
-.wechat-qrcode .footer-theme a {
-  color: $footer-theme-a-color;
-  text-shadow: $footer-theme-a-shadow;
+.footer-theme a {
+  color: #fc9d9a;
+  text-shadow: 0.1rem 0.1rem 0.2rem #fe4365;
 }
-.wechat-qrcode .footer-hitokoto {
+.footer-hitokoto {
   max-width: 50rem;
   margin: 0 auto;
   max-height: 3rem;
   overflow: hidden;
 }
 @media (max-width: 992px) {
-  .wechat-qrcode .footer-hitokoto {
+  .footer-hitokoto {
     max-width: 80%;
   }
 }
