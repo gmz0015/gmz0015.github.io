@@ -14,7 +14,7 @@
   <meta name="description" content>
   <meta name="author" content="Mingze Gao">
   <meta name="keywords" content>
-  <title>Archive ~ Noah</title>
+  <title>Django Deploy ~ Noah</title>
 
   <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.10.2/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
@@ -49,7 +49,7 @@
 </head>
 
 <body class="banner-bg">
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">&nbsp;<strong>Noah</strong>&nbsp;</a>
@@ -114,6 +114,41 @@
             </span>
 
             
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  Monday, March 30th 2020, 4:52 pm
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    293 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      1 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
           </div>
 
           
@@ -124,41 +159,101 @@
 
   <main id="mainContent" class="rgba-black-slight">
     
-      <div class="container nopadding-md" style="padding-top:0.5rem;padding-bottom:0.5rem;">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">4 posts in total.</p>
-  <hr>
-  
-    
       
-      <p class="h5">2019</p>
-    
-    <a href="/2019/03/28/Scopes-in-Servlet-and-JSP/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Scopes in Servlet and JSP</span>
-      <span style="float: right;">03-28</span>
-    </a>
-  
-    
-    <a href="/2019/03/20/hello-world/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Hello World</span>
-      <span style="float: right;">03-20</span>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <p>Recording the development procedure and the main commands</p>
+<a id="more"></a>
+<h1 id="Tech-Stack"><a href="#Tech-Stack" class="headerlink" title="Tech Stack"></a>Tech Stack</h1><ul>
+<li>Django</li>
+<li>Nginx</li>
+<li>uWsgi</li>
+</ul>
+<h1 id="Procedure"><a href="#Procedure" class="headerlink" title="Procedure"></a>Procedure</h1><p>Mainly refer to the <a href="https://segmentfault.com/q/1010000002523354/a-1020000002526934" target="_blank" rel="noopener">momomomo’s answer</a> and <a href="https://blog.csdn.net/xing851483876/article/details/84306953" target="_blank" rel="noopener">Mars_DD’s blog</a>.</p>
+<p>Unfortunately, a problem has occurred when deploy the Django project on ECS. The problem is that after I properly setup the configurations of uWsgi and Nginx, the response is 400.</p>
+<p>I thought there should be something wrong within <code>ALLOWED_HOSTS</code>. At first, the context of <code>ALLOWED_HOSTS</code> is <code>[&#39;noahgao.com&#39;, &#39;www.noahgao.com&#39;]</code>. After changed it to <code>[&#39;noahgao.com&#39;, &#39;www.noahgao.com&#39;, &#39;127.0.0.1&#39;]</code> or <code>[&#39;noahgao.com&#39;, &#39;www.noahgao.com&#39;, &#39;39.97.177.21&#39;]</code>, the problem was unsolved.</p>
+<blockquote>
+<p>However, I have met a familiar problem when I programmed on local machine which was solved by change <code>DEBUG</code> from <code>False</code> to <code>True</code></p>
+</blockquote>
+<p>Therefore, I did the same thing and the problem was solved. I still have no idea how it works. Maybe some previous steps work but not respond immediately as the deploy causes delay.</p>
+<p>More interestingly, when I compiled it on local machine, the magic didn’t work. But the problem has still been solved after I changed <code>ALLOWED_HOSTS</code> to <code>[&#39;noahgao.com&#39;, &#39;www.noahgao.com&#39;, &#39;127.0.0.1&#39;, &#39;39.97.177.21&#39;]</code>.</p>
+<h1 id="Memory-Items"><a href="#Memory-Items" class="headerlink" title="Memory Items"></a>Memory Items</h1><ul>
+<li>Ubuntu<ul>
+<li><code>ps -ef | grep uWsgi</code>: look for lines containing processname in a detailed overview/snapshot of all current processes, and display those lines. <a href="https://askubuntu.com/questions/852206/what-does-ps-efgrep-processname-mean" target="_blank" rel="noopener">Source</a></li>
+<li><code>kill -9 1234</code>: kill the process.</li>
+</ul>
+</li>
+<li>Nginx<ul>
+<li><code>service nginx start</code>: start</li>
+<li><code>service nginx stop</code>: stop</li>
+<li><code>service nginx reload</code>: restart</li>
+</ul>
+</li>
+<li>uWsgi<ul>
+<li><code>uwsgi --ini uwsgi.ini</code>: start</li>
+<li><code>uwsgi --stop uwsgi.pid</code>: stop</li>
+<li><code>uwsgi --reload uwsgi.pid</code>: restart</li>
+</ul>
+</li>
+<li>virtualenv<ul>
+<li><code>mkvirtualenv -p /usr/bin/python3.7  XX</code></li>
+<li><code>workon xx</code></li>
+<li><code>deactivate</code></li>
+</ul>
+</li>
+</ul>
 
-              </div>
-            </div>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/ECS">ECS</a>
+                
+                  <a class="hover-with-bg" href="/tags/Django">Django</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -254,6 +349,11 @@
 
 
 
+  
+    <script src="https://cdn.staticfile.org/tocbot/4.8.0/tocbot.min.js"></script>
+  
+  <script src="/js/post.js"></script>
+
 
 
   <script src="https://cdn.staticfile.org/smooth-scroll/16.1.0/smooth-scroll.min.js"></script>
@@ -316,7 +416,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Archive&nbsp;",
+        "Django Deploy&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
