@@ -127,7 +127,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    293 字
+                    318 字
                   </span>&nbsp;
                 
 
@@ -186,6 +186,8 @@
 <h1 id="Memory-Items"><a href="#Memory-Items" class="headerlink" title="Memory Items"></a>Memory Items</h1><ul>
 <li>Ubuntu<ul>
 <li><code>ps -ef | grep uWsgi</code>: look for lines containing processname in a detailed overview/snapshot of all current processes, and display those lines. <a href="https://askubuntu.com/questions/852206/what-does-ps-efgrep-processname-mean" target="_blank" rel="noopener">Source</a></li>
+<li><code>netstat -ntulp |grep 80</code>: look for the usage of port:80.</li>
+<li><code>lsof -i :80</code>: look for the processes of port:80 and the current connections.</li>
 <li><code>kill -9 1234</code>: kill the process.</li>
 </ul>
 </li>
@@ -236,7 +238,7 @@
     <div class="d-none d-lg-block col-lg-2 toc-container">
       
   <div id="toc">
-    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
     <div id="tocbot"></div>
   </div>
 
@@ -268,7 +270,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -276,7 +278,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">keyword</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
