@@ -14,7 +14,7 @@
   <meta name="description" content>
   <meta name="author" content="Mingze Gao">
   <meta name="keywords" content>
-  <title>Noah</title>
+  <title>Scopes in Servlet and JSP ~ Noah</title>
 
   <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.10.2/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
@@ -38,7 +38,7 @@
   <style type="text/css">
     .banner-bg {
       
-        background-image: url('https://blog-github-img.oss-accelerate.aliyuncs.com/index_background-min.jpg?x-oss-process=image/auto-orient,1/quality,q_38/watermark,text_Tm9haCBHYW8,color_ffffff,size_40,x_10,y_10');
+        background-image: url('http://blog-github-img.oss-accelerate.aliyuncs.com/my-first-blog-min.jpg?x-oss-process=image/auto-orient,1/quality,q_38/format,jpg/watermark,text_Tm9haCBHYW8,color_ffffff,size_40,x_10,y_10');
       
       background-position: center;
       background-repeat: repeat-y;
@@ -49,7 +49,7 @@
 </head>
 
 <body class="banner-bg">
-  <header style="height: 100vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">&nbsp;<strong>Noah</strong>&nbsp;</a>
@@ -114,12 +114,43 @@
             </span>
 
             
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  Thursday, March 28th 2019, 2:59 pm
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    209 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      1 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
           </div>
 
-          
-            <div class="scroll-down-bar">
-              <i class="fas fa-angle-down scroll-down-arrow"></i>
-            </div>
           
         </div>
       </div>
@@ -128,210 +159,92 @@
 
   <main id="mainContent" class="rgba-black-slight">
     
-      <div class="container nopadding-md" style="padding-top:0.5rem;padding-bottom:0.5rem;">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="Four-Scopes"><a href="#Four-Scopes" class="headerlink" title="Four Scopes"></a>Four Scopes</h1><ul>
+<li>JSP Page Scope</li>
+<li>Request Scope</li>
+<li>Session Scope</li>
+<li>Application or Ccontext Scope</li>
+</ul>
+<a id="more"></a>
+<h2 id="JSP-Page-Scope"><a href="#JSP-Page-Scope" class="headerlink" title="JSP Page Scope"></a>JSP Page Scope</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>The page scope restricts the scpoe and lifetime of attributes to <strong>the same page</strong> where it was created.</p>
+<h3 id="Obtained"><a href="#Obtained" class="headerlink" title="Obtained"></a>Obtained</h3><h4 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h4><p>Can’t obtain</p>
+<h4 id="JSP-Page"><a href="#JSP-Page" class="headerlink" title="JSP Page"></a>JSP Page</h4><p><code>pageScope</code> as an <strong>implicit object</strong></p>
+<h2 id="Request-Scope"><a href="#Request-Scope" class="headerlink" title="Request Scope"></a>Request Scope</h2><h3 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h3><p>Request scope</p>
+<ul>
+<li><strong>start</strong> from the moment an HTTP request hits a servlet in our web container</li>
+<li><strong>end</strong> when the servlet is done with delivering the HTTP response.</li>
+</ul>
+<h3 id="Obtained-1"><a href="#Obtained-1" class="headerlink" title="Obtained"></a>Obtained</h3><h4 id="Servlet-1"><a href="#Servlet-1" class="headerlink" title="Servlet"></a>Servlet</h4><p>Container passes the request object as an <strong>argument</strong> of type <code>HttpServletRequest</code> to Servlet’s service method.</p>
+<h4 id="JSP-Page-1"><a href="#JSP-Page-1" class="headerlink" title="JSP Page"></a>JSP Page</h4><p><code>request</code> as an <strong>implicit object</strong>. Set and get value for an <strong>attribute</strong>.</p>
+<h2 id="Session-Scope"><a href="#Session-Scope" class="headerlink" title="Session Scope"></a>Session Scope</h2><h3 id="Description-2"><a href="#Description-2" class="headerlink" title="Description"></a>Description</h3><p>A session scope</p>
+<ul>
+<li><strong>starts</strong> when a client <em>(e.g. browser window)</em> establishes connection with web application</li>
+<li><strong>till</strong> the point where the browser window is closed.</li>
+</ul>
+<p>Session scope spans across multiple requests from the same client.</p>
+<h3 id="Obtained-2"><a href="#Obtained-2" class="headerlink" title="Obtained"></a>Obtained</h3><h4 id="Servlet-2"><a href="#Servlet-2" class="headerlink" title="Servlet"></a>Servlet</h4><p>Get session object by <code>request.getSession()</code></p>
+<h4 id="JSP-Page-2"><a href="#JSP-Page-2" class="headerlink" title="JSP Page"></a>JSP Page</h4><p><code>session</code> as an <strong>implicit object</strong></p>
+<h2 id="Application-or-context-scope"><a href="#Application-or-context-scope" class="headerlink" title="Application or context scope"></a>Application or context scope</h2><h3 id="Description-3"><a href="#Description-3" class="headerlink" title="Description"></a>Description</h3><p>Context scope or application scope</p>
+<ul>
+<li><strong>starts</strong> from the point where a web application is put into service (started)</li>
+<li><strong>till</strong> it is removed from service (shutdown) or the web application is reloaded.</li>
+</ul>
+<p>Parameters/attributes within the application scope will be <strong>available to all requests and sessions</strong>.</p>
+<h3 id="Obtained-3"><a href="#Obtained-3" class="headerlink" title="Obtained"></a>Obtained</h3><h4 id="Servlet-3"><a href="#Servlet-3" class="headerlink" title="Servlet"></a>Servlet</h4><p><code>getServletContext()</code> within the servlet or <code>getServletConfig().getServletContext()</code> explicitly.</p>
+<h4 id="JSP-Page-3"><a href="#JSP-Page-3" class="headerlink" title="JSP Page"></a>JSP Page</h4><p><code>application</code> as an <strong>implicit object</strong></p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
                 
-
-
-  <div class="row mb-4 mx-auto">
-    
-    
-      
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2020/03/30/Django-Deploy/" target="_self">
-          <img src="http://blog-github-img.oss-accelerate.aliyuncs.com/Django-Deploy_background.jpeg?x-oss-process=image/auto-orient,1/resize,m_lfit,h_900/quality,q_25/format,jpg/watermark,text_Tm9haCBHYW8,color_ffffff,size_15,shadow_100,x_10,y_10" srcset="/img/loading.gif" alt="Django Deploy" class="img-fluid rounded z-depth-3 index-thumbnails">
-        </a>
-      </div>
-      
-      <div class="col-12 col-md-8 m-auto">
-    
-      <a href="/2020/03/30/Django-Deploy/" target="_self">
-        <p class="h4 index-header">Django Deploy</p>
-        
-        
-          
-          
-        
-        <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">Recording the development procedure and the main commands...</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-30&nbsp;&nbsp;
-        
-        
-        
-          <i class="far fa-chart-bar"></i>318字&nbsp;&nbsp;
-          <i class="far fa-clock"></i>1分钟&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/ECS">ECS</a>&nbsp;
-          
-            <a href="/tags/Django">Django</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-      
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2019/12/30/Customise-ECS/" target="_self">
-          <img src="https://blog-github-img.oss-accelerate.aliyuncs.com/Customise-ECS-background-min.jpg?x-oss-process=image/auto-orient,1/resize,m_lfit,h_900/quality,q_25/format,jpg/watermark,text_Tm9haCBHYW8,color_ffffff,size_15,shadow_100,x_10,y_10" srcset="/img/loading.gif" alt="Customise ECS" class="img-fluid rounded z-depth-3 index-thumbnails">
-        </a>
-      </div>
-      
-      <div class="col-12 col-md-8 m-auto">
-    
-      <a href="/2019/12/30/Customise-ECS/" target="_self">
-        <p class="h4 index-header">Customise ECS</p>
-        
-        
-          
-          
-        
-        <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">Some of steps of customising ECS(Elastic Compute Service)recording for myself....</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-12-30&nbsp;&nbsp;
-        
-        
-        
-          <i class="far fa-chart-bar"></i>26字&nbsp;&nbsp;
-          <i class="far fa-clock"></i>1分钟&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/ECS">ECS</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-      
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2019/03/28/Scopes-in-Servlet-and-JSP/" target="_self">
-          <img src="http://blog-github-img.oss-accelerate.aliyuncs.com/my-first-blog-min.jpg?x-oss-process=image/auto-orient,1/resize,m_lfit,h_900/quality,q_25/format,jpg/watermark,text_Tm9haCBHYW8,color_ffffff,size_15,shadow_100,x_10,y_10" srcset="/img/loading.gif" alt="Scopes in Servlet and JSP" class="img-fluid rounded z-depth-3 index-thumbnails">
-        </a>
-      </div>
-      
-      <div class="col-12 col-md-8 m-auto">
-    
-      <a href="/2019/03/28/Scopes-in-Servlet-and-JSP/" target="_self">
-        <p class="h4 index-header">Scopes in Servlet and JSP</p>
-        
-        
-          
-          
-        
-        <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">Four Scopes
-JSP Page Scope
-Request Scope
-Session Scope
-Application or Ccontext Scope
-...</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-03-28&nbsp;&nbsp;
-        
-        
-        
-          <i class="far fa-chart-bar"></i>209字&nbsp;&nbsp;
-          <i class="far fa-clock"></i>1分钟&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Java%20Web">Java Web</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-      
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2019/03/20/hello-world/" target="_self">
-          <img src="https://blog-github-img.oss-accelerate.aliyuncs.com/hello-world.jpg?x-oss-process=image/auto-orient,1/resize,m_lfit,h_900/quality,q_25/format,jpg/watermark,text_Tm9haCBHYW8,color_ffffff,size_15,shadow_100,x_10,y_10" srcset="/img/loading.gif" alt="Hello World" class="img-fluid rounded z-depth-3 index-thumbnails">
-        </a>
-      </div>
-      
-      <div class="col-12 col-md-8 m-auto">
-    
-      <a href="/2019/03/20/hello-world/" target="_self">
-        <p class="h4 index-header">Hello World</p>
-        
-        
-          
-        
-        <div class="index-excerpt">
-          <div class="index-text mb-1">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post$ hexo new &quot;My New Post&quot;
-
-More info: Writing
-Run server$ hexo server
-
-More info: Server
-Generate static files$ hexo generate
-
-More info: Generating
-Deploy to remote sites$ hexo deploy
-
-More info: Deployment
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-03-20&nbsp;&nbsp;
-        
-        
-        
-          <i class="far fa-chart-bar"></i>75字&nbsp;&nbsp;
-          <i class="far fa-clock"></i>1分钟&nbsp;&nbsp;
-        
-        
-      </div>
-    </div>
-  </div>
-
-
-
-
-
-              </div>
-            </div>
+                  <a class="hover-with-bg" href="/tags/Java%20Web">Java Web</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -427,6 +340,11 @@ More info: Deployment
 
 
 
+  
+    <script src="https://cdn.staticfile.org/tocbot/4.8.0/tocbot.min.js"></script>
+  
+  <script src="/js/post.js"></script>
+
 
 
   <script src="https://cdn.staticfile.org/smooth-scroll/16.1.0/smooth-scroll.min.js"></script>
@@ -489,7 +407,7 @@ More info: Deployment
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Hello My World&nbsp;",
+        "Scopes in Servlet and JSP&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
